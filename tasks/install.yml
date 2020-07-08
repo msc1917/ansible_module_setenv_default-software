@@ -1,0 +1,18 @@
+---
+- name: Deinstall Packages
+  apt:
+    name: [ 'cloud-init' ]
+    update_cache: no
+    state: absent 
+  become: yes
+  when: 
+    - ansible_distribution == "Debian"
+
+- name: Install Packages
+  apt:
+    name: [ 'vim', 'vim-scripts', 'vim-doc', 'debian-keyring', 'debian-archive-keyring', 'debian-ports-archive-keyring' ]
+    update_cache: no
+    state: present 
+  become: yes
+  when: 
+    - ansible_distribution == "Debian"
