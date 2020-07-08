@@ -10,7 +10,7 @@
 
 - name: Install Packages
   apt:
-    name: [ 'vim', 'vim-scripts', 'vim-doc', 'debian-keyring', 'debian-archive-keyring', 'debian-ports-archive-keyring' ]
+    name: [ 'vim', 'vim-scripts', 'vim-doc', 'keyboard-configuration', 'debian-keyring', 'debian-archive-keyring', 'debian-ports-archive-keyring' ]
     update_cache: no
     state: present 
   become: yes
