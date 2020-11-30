@@ -1,7 +1,11 @@
 ---
 - name: Deinstall graphical interface 
-  include_tasks: gui_none.yml
+  include_role: 
+    name: setenv_gui-setup
   when:
     - enviroment is defined
     - enviroment.gui_system is defined
     - not enviroment.gui_system
+
+- name: Install and deinstall defaults 
+  include_tasks: install.yml
