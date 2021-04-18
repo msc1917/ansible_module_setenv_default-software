@@ -2,7 +2,8 @@
 - name: Deinstall Packages
   apt:
     name: [ 'cloud-init' ]
-    update_cache: no
+    update_cache:     "{{ apt_proxy.update_repo | default(no) }}"
+    cache_valid_time: "{{ apt_proxy.update_cache | default(0) }}"
     state: absent 
   become: yes
   when: 
@@ -11,7 +12,8 @@
 - name: Install Packages
   apt:
     name: [ 'vim', 'vim-scripts', 'vim-doc', 'keyboard-configuration', 'debian-keyring', 'debian-archive-keyring', 'debian-ports-archive-keyring', 'dnsutils', 'figlet', 'tmux' ]
-    update_cache: no
+    update_cache:     "{{ apt_proxy.update_repo | default(no) }}"
+    cache_valid_time: "{{ apt_proxy.update_cache | default(0) }}"
     state: present 
   become: yes
   when: 
